@@ -17,20 +17,20 @@ public class timerScript : MonoBehaviour
     void Start()
     {
         timeLeftBar = GetComponent<Slider>();
-        timeLeft = timeMax;
         timeLeftBar.maxValue = timeMax;
-        timeLeftBar.value = timeLeft;
+        timeLeftBar.value = 0;
         Debug.Log("Starting timer");
     }
 
     void Update()
     {
-        if(timeLeft > 0)
+        if(timeLeft < timeMax)
         {
             timesUpText.SetActive(false);
-            timeLeft = timeLeft - Time.deltaTime;
+            timeLeft = timeLeft + Time.deltaTime;
             Debug.Log(timeLeft);
             timeLeftBar.value = timeLeft;
+            Debug.Log("Time Increase");
         }
         else
         {
