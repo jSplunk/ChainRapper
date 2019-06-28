@@ -10,6 +10,8 @@ public class timerScript : MonoBehaviour
     public float timeMax = 10.0f;
     float timeLeft;
     public GameObject timesUpText;
+    public GameObject scoreText;
+    float score;
     
 
     void Start()
@@ -33,6 +35,14 @@ public class timerScript : MonoBehaviour
         else
         {
             timesUpText.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("DEV KEY PRESSED");
+            score = Mathf.RoundToInt(timeLeftBar.value);
+            scoreText.GetComponent<Text>().text = "SCORE: " + score;
             Time.timeScale = 0;
         }
     }
