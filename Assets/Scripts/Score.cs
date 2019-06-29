@@ -11,12 +11,10 @@ public class Score : MonoBehaviour {
 	void Start () {
 
         scoreText = GetComponent<Text>();
-
-        scoreText.text = staticDataTrack.score.ToString();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        scoreText.text = "" + staticDataTrack.GetScore();
+    }
 }

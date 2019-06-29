@@ -28,6 +28,7 @@ public class timerScript : MonoBehaviour
     private bool thirdFlag;
     private bool fourthFlag;
     private bool isClicked = false;
+    public bool isGameOver = false;
 
     public int counter = 0;
 
@@ -41,9 +42,8 @@ public class timerScript : MonoBehaviour
         timeLeftBar.maxValue = timeMax;
         timeLeftBar.value = 0;
         Debug.Log("Starting timer");
-        sentenceBox.text = sentCont.sentences[counter];
+        sentenceBox.text = sentCont.sentences[counter] + "_____";
         GenerateRandomWord();
-
     }
 
     void TimerReset()
@@ -87,18 +87,50 @@ public class timerScript : MonoBehaviour
     {
         if (timeLeft >= sentCont.rangeMin[counter] * timeMax && timeLeft <= sentCont.rangeMax[counter] * timeMax)
         {
-            timeMax -= 1;
-            Debug.Log("DEV KEY PRESSED");
-            staticDataTrack.AddScore(10);
-            scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
-            counter += 1;
-            sentenceBox.text = sentCont.sentences[counter];
-            isClicked = true;
-            TimerReset();
+            if (word1.isClicked)
+            {
+                staticDataTrack.readOut.Add(sentCont.sentences[counter] + word1.word + '\n');
+                word1.isClicked = false;
+            }
+            else if (word2.isClicked)
+            {
+                staticDataTrack.readOut.Add(sentCont.sentences[counter] + word2.word + '\n');
+                word2.isClicked = false;
+            }
+            else if (word3.isClicked)
+            {
+                staticDataTrack.readOut.Add(sentCont.sentences[counter] + word3.word + '\n');
+                word3.isClicked = false;
+            }
+
+            if (timeMax > 2) timeMax -= 1;
+            
+            if (counter > sentCont.rangeMin.Length-1 || counter > sentCont.rangeMax.Length-1 || counter > sentCont.words.Count-2)
+            {
+
+                isGameOver = true;
+                //GAME
+                //
+                //OVER
+            }
+            else
+            {
+                Debug.Log("DEV KEY PRESSED");
+                staticDataTrack.AddScore(10);
+                scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
+                counter += 1;
+                sentenceBox.text = sentCont.sentences[counter] + "_____";
+                isClicked = true;
+                TimerReset();
+            }
+            
         }
-        else
+        else if (!(timeLeft >= sentCont.rangeMin[counter] * timeMax && timeLeft <= sentCont.rangeMax[counter] * timeMax) && !isGameOver)
         {
             staticDataTrack.AddScore(-5);
+            word1.isClicked = false;
+            word2.isClicked = false;
+            word3.isClicked = false;
         }
     }
 
@@ -144,10 +176,13 @@ public class timerScript : MonoBehaviour
 
     public void GenerateRandomWord()
     {
-        words = sentCont.words[counter];
-        word1.word = words[0];
-        word2.word = words[1];
-        word3.word = words[2];
+        if (counter < sentCont.words.Count)
+        {
+            words = sentCont.words[counter];
+            word1.word = words[0];
+            word2.word = words[1];
+            word3.word = words[2];
+        }
     }
 
 }

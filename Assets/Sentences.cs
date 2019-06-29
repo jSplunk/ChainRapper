@@ -5,20 +5,32 @@ using UnityEngine.UI;
 
 public class Sentences : MonoBehaviour {
 
-    public WordCheck wc;
+    public timerScript timerS;
     Text sentenceText;
-    List<string> sentences;
+    bool stringOutput = false;
+    //List<string> sentences;
 
 	// Use this for initialization
 	void Start () {
         sentenceText = GetComponent<Text>();
-        sentences = wc.sentences;
+        sentenceText.text = "";
+        //sentences = wc.sentences;
 
-        sentenceText.text += sentences; 
+        Debug.Log(staticDataTrack.readOut.Count);
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        if (timerS.isGameOver && !stringOutput)
+        {
+            foreach (string s in staticDataTrack.readOut)
+            {
+                Debug.Log(s);
+                sentenceText.text += s;
+            }
+            stringOutput = true;
+        }
+    }
 }

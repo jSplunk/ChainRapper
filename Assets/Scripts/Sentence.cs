@@ -62,9 +62,9 @@ public class Sentence : MonoBehaviour {
         }
     }
 
-    public void setTmp(Word wordRef)
-    {
-        tmp = wordRef;
-    }
+    //public void setTmp(Word wordRef)
+    //{
+    //    tmp = wordRef;
+    //}
 
 }

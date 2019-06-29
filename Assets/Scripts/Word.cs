@@ -10,6 +10,7 @@ public class Word : MonoBehaviour {
 
     //public WordContainer.Type type;
     public string word;
+    public bool isClicked;
     
     //public timerScript timer;
     Text rapWord;
@@ -20,6 +21,11 @@ public class Word : MonoBehaviour {
         rapWord.text = word;
     }
 
+
+    public void clicked()
+    {
+        isClicked = true;
+    }
 
     //// Use this for initialization
     //void Start () {
