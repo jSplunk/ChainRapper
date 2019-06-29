@@ -8,13 +8,15 @@ public class WordCheck : MonoBehaviour {
     public Word chosenWord;
     public Blank chosenBlank;
 
-    [SerializeField]Sentance currentSentance;
+    public List<string> sentences;
+
+    [SerializeField]Sentence currentSentance;
 
     public List<Word> chosenWords;
 
 	// Use this for initialization
 	void Start () {
-
+        sentences = new List<string>();
     }
 	
 	// Update is called once per frame
@@ -24,7 +26,7 @@ public class WordCheck : MonoBehaviour {
 
     public void ButtonRefresh()
     {
-        if (currentSentance.isSentanceComplete()) ;
+        sentences.Add(currentSentance.isSentanceComplete());
     }
 
     bool DoesItFit()
