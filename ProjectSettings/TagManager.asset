@@ -6,8 +6,8 @@ TagManager:
   tags:
   - RapWindow
   - RapWord
-  - RapCharBar
   - RapUI
+  - RapBlank
   layers:
   - Default
   - TransparentFX
