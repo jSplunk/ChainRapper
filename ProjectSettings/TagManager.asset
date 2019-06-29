@@ -6,7 +6,8 @@ TagManager:
   tags:
   - RapWindow
   - RapWord
-  - RapCharBar
+  - RapUI
+  - RapBlank
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2160906627
+    locked: 0
+  - name: CharBar
+    uniqueID: 3581067273
     locked: 0

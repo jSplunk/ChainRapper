@@ -20,6 +20,7 @@ public class WordContainer : MonoBehaviour {
         public Type type;
     }
 
+    //Put in as a seperate file as data
     public Container[] wordCont;
 
     //Redurn random work of Type

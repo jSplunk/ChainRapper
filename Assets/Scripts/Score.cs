@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class WordBarSpawner : MonoBehaviour {
+public class Score : MonoBehaviour {
 
-    public GameObject go;
-    int NumberOfChars;
-
-    List<GameObject> gos;
+    Text scoreText;
 
 	// Use this for initialization
 	void Start () {
-        Instantiate(go, transform);
+
+        scoreText = GetComponent<Text>();
+
+        scoreText.text = staticDataTrack.score.ToString();
 	}
 	
 	// Update is called once per frame
