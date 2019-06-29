@@ -21,7 +21,7 @@ public class WordCheck : MonoBehaviour {
 
     bool DoesItFit()
     {
-        if (chosenWord.name == blank.type)
+        if (chosenWord.type == chosenBlank.type)
         {
             return true;
         }

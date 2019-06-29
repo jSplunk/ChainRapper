@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Word : MonoBehaviour {
 
+    public Type type;
     public string word;
     Text rapWord;
 
