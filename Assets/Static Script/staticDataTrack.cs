@@ -15,5 +15,4 @@ public static class staticDataTrack {
     {
         return score;
     }
-
 }
