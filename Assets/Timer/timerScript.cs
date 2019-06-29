@@ -24,7 +24,7 @@ public class timerScript : MonoBehaviour
     private bool thirdFlag;
     private bool fourthFlag;
 
-    private int counter = 0;
+    public int counter = 0;
 
     //private float middleSectionSize = 0.6f;
     //private float outsideSectionSize = 1.5f;

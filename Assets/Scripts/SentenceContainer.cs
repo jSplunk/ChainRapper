@@ -5,8 +5,20 @@ using UnityEngine;
 public class SentenceContainer : MonoBehaviour {
     public string[] sentences = new string[] 
     {
-        "Yo, my name is _____",
-        "test"
+        "My name’s Chain the _____",
+        "I’m not just some _____",
+        "Surrounded by a world of _____",
+        "Nothing left to see but _____",
+
+        "Not living a life too _____",
+        "All I eat is _____",
+        "You thought Chernobyl was _____",
+        "Well, _____ ",
+
+        "A gorgeous view of _____",
+        "Is now just a land of _____",
+        "But all’s not over, until humanity _____",
+        "For we can still _____"
     };
 
     public float[] rangeMin = new float[]

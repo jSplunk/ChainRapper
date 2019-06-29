@@ -10,7 +10,10 @@ public class Sentence : MonoBehaviour {
     //List<Blank> allBlanks;
   
     public string sentence;
+    public SentenceContainer sentCont;
+    public timerScript timer;
     List<Word> WordsBox;
+    Word tmp;
 
 	// Use this for initialization
 	void Start () {
@@ -22,9 +25,7 @@ public class Sentence : MonoBehaviour {
         for(int i = 0; i < tmp.Length; i++)
         {
             WordsBox.Add(tmp[i]);
-        }
-
-        
+        }            
 	}
 	
 	// Update is called once per frame
@@ -38,28 +39,35 @@ public class Sentence : MonoBehaviour {
         int NumberOfBlanks = AmountOfBlanks;
         int BlanksFilled = 0;
 
-        Word tmp = new Word();
+        //Word tmp = WordsBox[0];
 
-        for (int i = 0; i < WordsBox.Capacity-1; i++)
-        { 
-            if (WordsBox[i].isFilled)
-            {
-                tmp = WordsBox[i];
-                BlanksFilled++;
-            }
-        }
+        //for (int i = 0; i < WordsBox.Capacity-1; i++)
+        //{ 
+        //    if (WordsBox[i].isFilled)
+        //    {
+        //        tmp = WordsBox[i];
+        //        BlanksFilled++;
+        //    }
+        //}
+        
 
-        if (BlanksFilled == NumberOfBlanks)
+
+        if (true)//BlanksFilled == NumberOfBlanks)
         {
             for (int i = 0; i < WordsBox.Capacity - 1; i++)
             {
                 WordsBox[i].NewRandomWord();
             }
 
-            return sentence+tmp.name;
+            return sentCont.sentences[timer.counter]+tmp.word;
         }
 
         return null;
+    }
+
+    public void setTmp(Word wordRef)
+    {
+        tmp = wordRef;
     }
 
 }
