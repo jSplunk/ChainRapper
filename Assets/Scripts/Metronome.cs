@@ -7,10 +7,17 @@ public class Metronome : MonoBehaviour
 {
     private float timeRemaining;
     private bool flag; //signals beggining or end of the timer, decides on direction of the slider
-    public Slider slider;
-    public float timerMax;
-    public float timerSpeed;
+    private Slider slider;
+    private float timerMax = 10f;
+    [SerializeField] private float timerSpeed;
+    private float MiddleSectionSize = 0.6f;
+    private float OutsideSectionSize = 1.5f;
 
+
+    private void Start()
+    {
+        slider = GetComponent<Slider>();
+    }
     void Update()
     {
         slider.value = CalculateSliderValue();
@@ -37,16 +44,11 @@ public class Metronome : MonoBehaviour
             timeRemaining -= Time.deltaTime * timerSpeed;
         }
 
-        if (Input.GetKeyDown("space"))
+        if(Input.GetKeyDown(KeyCode.W))
         {
-            print("ATTACK!");
-            print(timeRemaining);
-
-            checkPhase();
+            CheckPhase();
         }
 
-
-        //Debug.Log(timeRemaining); //displays timeRemaining values in the debug log in unity, delete later
     }
 
     float CalculateSliderValue()
@@ -55,15 +57,24 @@ public class Metronome : MonoBehaviour
     }
 
     //for testing, displays a message when time was between given values
-    void checkPhase()
+    public void CheckPhase()
     {
-        if (timeRemaining >= 14.5f && timeRemaining <= 15.5f)
+        if (timeRemaining >= (timerMax*0.5)-MiddleSectionSize && timeRemaining <= (timerMax*0.5)+MiddleSectionSize)
         {
-            print("CRITICAL HIT!");
+            print("Middle Section!");
+            timerSpeed += 1;
         }
-        if (timeRemaining >= 64.5f && timeRemaining <= 65.5f)
+        else if (timeRemaining >= (timerMax * 0.5) - OutsideSectionSize && timeRemaining <= (timerMax * 0.5) + OutsideSectionSize)
         {
-            print("CRITICAL HIT!");
+            print("Outside Section!");
+            timerSpeed += 0.5f;
+        }
+        else
+        {
+            if (timerSpeed >= 3f)
+            {
+                timerSpeed -= 0.5f;
+            }
         }
     }
 }
