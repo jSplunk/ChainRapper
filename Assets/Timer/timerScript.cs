@@ -11,7 +11,6 @@ public class timerScript : MonoBehaviour
     float timeLeft;
     public GameObject timesUpText;
     public GameObject scoreText;
-    float score;
     
 
     void Start()
@@ -41,8 +40,8 @@ public class timerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("DEV KEY PRESSED");
-            score = Mathf.RoundToInt(timeLeftBar.value);
-            scoreText.GetComponent<Text>().text = "SCORE: " + score;
+            staticDataTrack.AddScore(Mathf.RoundToInt(timeMax - timeLeftBar.value));
+            scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
             Time.timeScale = 0;
         }
     }
