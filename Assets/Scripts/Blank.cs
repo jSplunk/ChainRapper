@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Blank : MonoBehaviour {
 
-    public Type type;
+    //public Type type;
     public bool isFilled;
     public string blankWord;
     Text word;

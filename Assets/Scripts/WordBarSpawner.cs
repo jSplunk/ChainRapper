@@ -13,15 +13,15 @@ public class WordBarSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        for (int i = 0; i < NumberOfWords; i++)
-        {
-            GameObject tmpParent = new GameObject("Word"+i);
+        //for (int i = 0; i < NumberOfWords; i++)
+        //{
+        //    GameObject tmpParent = new GameObject("Word"+i);
 
-            for (int j = 0; j < NumberOfChars; j++)
-            {
+        //    for (int j = 0; j < NumberOfChars; j++)
+        //    {
 
-            }
-        }
+        //    }
+        //}
         
 	}
 	

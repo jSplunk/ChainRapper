@@ -6,7 +6,7 @@ public class WordCheck : MonoBehaviour {
 
 
     public Word chosenWord;
-    public Blank chosenBlank;
+    //public Blank chosenBlank;
 
     public List<string> sentences;
 
@@ -29,26 +29,26 @@ public class WordCheck : MonoBehaviour {
         sentences.Add(currentSentance.isSentanceComplete());
     }
 
-    bool DoesItFit()
-    {
-        if (chosenWord.type == chosenBlank.type)
-        {
-            return true;
-        }
+    //bool DoesItFit()
+    //{
+    //    if (chosenWord.type == chosenBlank.type)
+    //    {
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    public bool SaveChoice()
-    {
-        if (DoesItFit())
-        {
-            chosenWords.Add(chosenWord);
-            return true;
-        }
+    //public bool SaveChoice()
+    //{
+    //    if (DoesItFit())
+    //    {
+    //        chosenWords.Add(chosenWord);
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
 
 

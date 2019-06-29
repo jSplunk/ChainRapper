@@ -5,11 +5,10 @@ using UnityEngine;
 public class Sentence : MonoBehaviour {
 
 
-    [SerializeField] int AmountOfBlanks;
-    [SerializeField] int AmountOfWords;
+    //[SerializeField] int AmountOfBlanks;
+    //[SerializeField] int AmountOfWords;
     //List<Blank> allBlanks;
   
-    public string sentence;
     public SentenceContainer sentCont;
     public timerScript timer;
     List<Word> WordsBox;
@@ -36,8 +35,8 @@ public class Sentence : MonoBehaviour {
     public string isSentanceComplete()
     {
 
-        int NumberOfBlanks = AmountOfBlanks;
-        int BlanksFilled = 0;
+        //int NumberOfBlanks = AmountOfBlanks;
+        //int BlanksFilled = 0;
 
         //Word tmp = WordsBox[0];
 
@@ -56,13 +55,11 @@ public class Sentence : MonoBehaviour {
         {
             for (int i = 0; i < WordsBox.Capacity - 1; i++)
             {
-                WordsBox[i].NewRandomWord();
+               //WordsBox[i].NewRandomWord();
             }
 
             return sentCont.sentences[timer.counter]+tmp.word;
         }
-
-        return null;
     }
 
     public void setTmp(Word wordRef)
