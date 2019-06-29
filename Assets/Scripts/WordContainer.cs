@@ -2,16 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Type
-{
-    SENT1,
-    SENT2,
-    SENT3,
-    SENT4,
-    SENT5
-}
 
+
+//-------------------------------------
 public class WordContainer : MonoBehaviour {
+
+    public enum Type
+    {
+        SENT1,
+        SENT2,
+        SENT3,
+        SENT4,
+        SENT5
+    }
+
+    //-------------------------------------
+    public enum Verse
+    {
+        VER1,
+        VER2,
+        VER3,
+        VER4,
+        VER5,
+        VER6
+    }
 
     [System.Serializable]
     public struct Container
@@ -20,28 +34,54 @@ public class WordContainer : MonoBehaviour {
         public Type type;
     }
 
+    public int meh = 0;
 
     //Put in as a seperate file as data
-    public Container[] wordCont;
+    public List<Container> wordCont = new List<Container>();
+    List<Container> wordArr = new List<Container>();
 
     //Redurn random work of Type
     public Container GetRandomWord(Type type)
     {
-        Container temp = wordCont[Random.Range(0, wordCont.Length - 1)];
-        if (temp.type == type)
+
+        for (int i = 0; i < wordCont.Count; i++)
         {
-            return temp;
+            if (wordCont[i].type == type)
+            {
+                wordArr.Add(wordCont[i]);
+            }
         }
-        else
-        {
-            return GetRandomWord(type);
-        }
+
+        //Container temp = wordArr[Random.Range(0, wordArr.Count - 1)];
+        //foreach(Container o in wordArr)
+        //{
+        //    wordCont.Remove(o);
+        //}
+
+
+
+        ////Container temp1 = temp;
+        //if (temp.type == type)
+        //{
+        //    //wordCont.Remove(temp);
+        //    return temp;
+
+        //}
+        //else
+        //{
+        //    return GetRandomWord(type);
+        //}
+        Container temp = wordArr[meh];
+        meh++;
+
+
+        return temp;
     }
 
     //Return any random word
     public Container GetRandomWord()
     {
-        return wordCont[Random.Range(0, wordCont.Length - 1)];
+        return wordCont[Random.Range(0, wordCont.Count - 1)];
     }
     
 }

@@ -12,6 +12,10 @@ public class timerScript : MonoBehaviour
     float timeLeft;
     public GameObject timesUpText;
     public SentenceContainer sentCont;
+    public List<string> words;
+    public Word word1;
+    public Word word2;
+    public Word word3;
     public GameObject scoreText;
     public Text sentenceBox;
     public AudioSource aSource;
@@ -23,6 +27,7 @@ public class timerScript : MonoBehaviour
     private bool secFlag;
     private bool thirdFlag;
     private bool fourthFlag;
+    private bool isClicked = false;
 
     public int counter = 0;
 
@@ -37,6 +42,7 @@ public class timerScript : MonoBehaviour
         timeLeftBar.value = 0;
         Debug.Log("Starting timer");
         sentenceBox.text = sentCont.sentences[counter];
+        GenerateRandomWord();
 
     }
 
@@ -47,8 +53,10 @@ public class timerScript : MonoBehaviour
         timeLeftBar.maxValue = timeMax;
         timeLeftBar.value = 0;
         Debug.Log("Starting timer");
-        staticDataTrack.AddScore(-10);
+        if (!isClicked)
+            staticDataTrack.AddScore(-10);
         timeLeft = 0;
+        isClicked = false;
     }
 
     void Update()
@@ -83,9 +91,10 @@ public class timerScript : MonoBehaviour
             Debug.Log("DEV KEY PRESSED");
             staticDataTrack.AddScore(10);
             scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
-            Time.timeScale = 0;
             counter += 1;
             sentenceBox.text = sentCont.sentences[counter];
+            isClicked = true;
+            TimerReset();
         }
         else
         {
@@ -131,6 +140,14 @@ public class timerScript : MonoBehaviour
             oneFlag = false;
             fourthFlag = true;
         }
+    }
+
+    public void GenerateRandomWord()
+    {
+        words = sentCont.words[counter];
+        word1.word = words[0];
+        word2.word = words[1];
+        word3.word = words[2];
     }
 
 }

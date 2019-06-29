@@ -3,41 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Word : MonoBehaviour {
 
-    [SerializeField] WordContainer wordContainer;
+    //[SerializeField] SentenceContainer wordList;
 
-    public Type type;
+    //public WordContainer.Type type;
     public string word;
-    public bool isFilled;
-    public timerScript timer;
+    
+    //public timerScript timer;
     Text rapWord;
 
-	// Use this for initialization
-	void Start () {
-        NewRandomWord();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void NewRandomWord()
+    private void Update()
     {
-        WordContainer.Container container;
-        container = wordContainer.GetRandomWord((Type)timer.counter);
-
-        word = container.name;
-        type = container.type;
-
         rapWord = GetComponentInChildren<Text>();
         rapWord.text = word;
     }
 
-    public void Click()
-    {
-        isFilled = true;
-    }
+
+    //// Use this for initialization
+    //void Start () {
+    //       NewRandomWord();
+    //   }
+
+    //// Update is called once per frame
+    //void Update () {
+
+    //}
+
+    //   public void NewRandomWord()
+    //   {
+    //       //WordContainer.Container container;
+    //       //container = wordContainer.GetRandomWord((WordContainer.Type)timer.counter);
+    //       word = wordList.words[timer.counter][Random.Range(0,wordList.words.Count)];
+    //       //type = wordContainer.type;
+
+    //       rapWord = GetComponentInChildren<Text>();
+    //       rapWord.text = word;
+    //   }
+
+
 
 }
