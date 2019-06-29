@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Sentance : MonoBehaviour {
 
-    List<Blank> allBlanks;
+
+    [SerializeField] int AmountOfBlanks;
+    //List<Blank> allBlanks;
+    List<Word> allWords;
 
 	// Use this for initialization
 	void Start () {
-        Blank[] tmp = GetComponentsInChildren<Blank>();
+
+        allWords = new List<Word>();
+
+        Word[] tmp = GetComponentsInChildren<Word>();
 
         for(int i = 0; i < tmp.Length; i++)
         {
-            allBlanks.Add(tmp[i]);
+            allWords.Add(tmp[i]);
         }
+
+        
 	}
 	
 	// Update is called once per frame
@@ -24,14 +32,15 @@ public class Sentance : MonoBehaviour {
     public bool isSentanceComplete()
     {
 
-        int NumberOfBlanks = allBlanks.Capacity;
+        int NumberOfBlanks = AmountOfBlanks;
         int BlanksFilled = 0;
 
 
-        foreach (Blank b in allBlanks)
-        {
-            if (b.isFilled)
+        for (int i = 0; i < allWords.Capacity-1; i++)
+        { 
+            if (allWords[i].isFilled)
             {
+                
                 BlanksFilled++;
             }
         }
@@ -43,4 +52,5 @@ public class Sentance : MonoBehaviour {
 
         return false;
     }
+
 }
