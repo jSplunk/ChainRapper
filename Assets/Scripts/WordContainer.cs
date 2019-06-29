@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum Type
 {
-    NOUN,
-    VERB,
-    ADJECTIVE,
-    ADVERB
+    SENT1,
+    SENT2,
+    SENT3,
+    SENT4,
+    SENT5
 }
 
 public class WordContainer : MonoBehaviour {
