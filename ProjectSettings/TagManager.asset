@@ -3,11 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - RapWindow
-  - RapWord
-  - RapUI
-  - RapBlank
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -45,9 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 2160906627
+  - name: Player
+    uniqueID: 1538835953
     locked: 0
-  - name: CharBar
-    uniqueID: 3581067273
+  - name: Background
+    uniqueID: 2304922899
     locked: 0
