@@ -19,15 +19,13 @@ public class WordCheck : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        
-
-		if (currentSentance.isSentanceComplete())
-        {
-            Debug.Log("Quit");
-            Application.Quit();
-        }
+		
 	}
+
+    public void ButtonRefresh()
+    {
+        if (currentSentance.isSentanceComplete()) ;
+    }
 
     bool DoesItFit()
     {

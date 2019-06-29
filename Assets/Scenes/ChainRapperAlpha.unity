@@ -146,13 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d63f7ddac20a44da37ee0dc28566b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordCont:
-  - name: Walking
-    type: 1
-  - name: Chair
-    type: 0
-  - name: Cute
-    type: 2
 --- !u!4 &265828156
 Transform:
   m_ObjectHideFlags: 0
@@ -173,11 +166,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 810819995}
     m_Modifications:
-    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224113237786523706, guid: cb19c3d5685a3584f86ff19a8f5505b2,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -278,51 +266,26 @@ Prefab:
       propertyPath: wordContainer
       value: 
       objectReference: {fileID: 265828155}
+    - target: {fileID: 114980781745825100, guid: cb19c3d5685a3584f86ff19a8f5505b2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 691417169}
+    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 691417169}
+    - target: {fileID: 114910528448299008, guid: cb19c3d5685a3584f86ff19a8f5505b2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 691417169}
     - target: {fileID: 114130194085696348, guid: cb19c3d5685a3584f86ff19a8f5505b2,
         type: 2}
       propertyPath: wordContainer
       value: 
       objectReference: {fileID: 265828155}
-    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11500016}
-    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Click
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211124845321224, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114910528448299008, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 779222162}
-    - target: {fileID: 114910528448299008, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Click
-      objectReference: {fileID: 0}
-    - target: {fileID: 114910528448299008, guid: cb19c3d5685a3584f86ff19a8f5505b2,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb19c3d5685a3584f86ff19a8f5505b2, type: 2}
   m_IsPrefabAsset: 0
@@ -466,7 +429,7 @@ GameObject:
   - component: {fileID: 810819992}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,8 +479,8 @@ Canvas:
   m_GameObject: {fileID: 810819991}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1260011291}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -558,7 +521,7 @@ GameObject:
   - component: {fileID: 1260011292}
   - component: {fileID: 1260011291}
   - component: {fileID: 1260011290}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

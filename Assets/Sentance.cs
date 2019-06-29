@@ -40,13 +40,17 @@ public class Sentance : MonoBehaviour {
         { 
             if (allWords[i].isFilled)
             {
-                
                 BlanksFilled++;
             }
         }
 
         if (BlanksFilled == NumberOfBlanks)
         {
+            for (int i = 0; i < allWords.Capacity - 1; i++)
+            {
+                allWords[i].NewRandomWord();
+            }
+
             return true;
         }
 
