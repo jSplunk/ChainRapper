@@ -20,6 +20,7 @@ public class WordContainer : MonoBehaviour {
         public Type type;
     }
 
+
     //Put in as a seperate file as data
     public Container[] wordCont;
 
@@ -33,12 +34,8 @@ public class WordContainer : MonoBehaviour {
         }
         else
         {
-            GetRandomWord(type);
+            return GetRandomWord(type);
         }
-
-        //It should never reach this point
-        Container empty = new Container();
-        return empty;
     }
 
     //Return any random word

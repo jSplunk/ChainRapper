@@ -10,6 +10,7 @@ public class Word : MonoBehaviour {
     public Type type;
     public string word;
     public bool isFilled;
+    public timerScript timer;
     Text rapWord;
 
 	// Use this for initialization
@@ -25,7 +26,7 @@ public class Word : MonoBehaviour {
     public void NewRandomWord()
     {
         WordContainer.Container container;
-        container = wordContainer.GetRandomWord();
+        container = wordContainer.GetRandomWord((Type)timer.counter);
 
         word = container.name;
         type = container.type;
