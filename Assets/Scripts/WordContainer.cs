@@ -22,7 +22,7 @@ public class WordContainer : MonoBehaviour {
     public Container[] wordCont;
 
     //Redurn random work of Type
-    Container GetRandomWord(Type type)
+    public Container GetRandomWord(Type type)
     {
         Container temp = wordCont[Random.Range(0, wordCont.Length - 1)];
         if (temp.type == type)
@@ -40,7 +40,7 @@ public class WordContainer : MonoBehaviour {
     }
 
     //Return any random word
-    Container GetRandomWord()
+    public Container GetRandomWord()
     {
         return wordCont[Random.Range(0, wordCont.Length - 1)];
     }
