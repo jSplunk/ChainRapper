@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Sentences : MonoBehaviour {
+public class Sentencesold : MonoBehaviour {
 
     public WordCheck wc;
     Text sentenceText;
