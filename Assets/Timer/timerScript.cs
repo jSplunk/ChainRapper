@@ -37,6 +37,7 @@ public class timerScript : MonoBehaviour
     private bool thirdFlag;
     private bool fourthFlag;
     private bool isClicked = false;
+    public bool isGameOver = false;
 
     public Animator chains_Animator;
     public GameObject tempAnimator;
@@ -64,6 +65,7 @@ public class timerScript : MonoBehaviour
         Debug.Log("Starting timer");
         sentenceBox.text = sentCont.sentences[counter];
         GenerateRandomWord();
+        Debug.Log(sentCont.sentences.Length);
 
     }
 
@@ -75,11 +77,20 @@ public class timerScript : MonoBehaviour
         timeLeftBar.value = 0;
         Debug.Log("Starting timer");
         timeLeft = 0;
+        if(!isClicked)
+        {
+            staticDataTrack.ResetChain();
+        }
         isClicked = false;
     }
 
     void Update()
     {
+        if(timeMax >= 16)
+        {
+            timeMax = 15;
+        }
+        timeLeftBar.maxValue = timeMax;
         //update the game text
         scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
         chainCounterText.GetComponent<Text>().text = "CHAIN: " + staticDataTrack.GetChain();
@@ -121,31 +132,59 @@ public class timerScript : MonoBehaviour
     {
         if (timeLeft >= 0.838f * timeMax && timeLeft <= 1f * timeMax)
         {
-            //if the moment button clicked is within the blank space
-            //decreases max time of timer so it scrolls faster
-            timeMax -= 0.5f; //change to speed
-            Debug.Log("DEV KEY PRESSED");
-            //adding to score
-            staticDataTrack.AddScore(10 + Mathf.RoundToInt(timeSpeed));
-            //adding to the chain count
-            staticDataTrack.SetChain(1);
+            if (counter % 2 != 0)
+            {
+                chosenIndexPrev = chosenIndex;
+            }
 
-            //trigger chains to speak
-            aSource2.clip = chains_uhh;
-            aSource2.Play();
-            chains_Animator.SetTrigger("chains_Rap_Trigger");
+            if (word1.isClicked)
+            {
+                word1.index = chosenIndex;
+            }
+            else if (word2.isClicked)
+            {
+                word2.index = chosenIndex;
+            }
+            else if (word3.isClicked)
+            {
+                word3.index = chosenIndex;
+            }
 
-            //add word to script
-            SaveWord(sentCont.sentences[counter] + sentCont.words[counter][chosenIndex] + '\n') ;
+            if (counter > sentCont.sentences.Length - 2)
+            {
+                
+                Debug.Log("GameOver");
+                isGameOver = true;
+               
+            }
+            else
+            {
+                //update the game counter
+                counter += 1;
+                //if the moment button clicked is within the blank space
+                //decreases max time of timer so it scrolls faster
+                timeMax -= 0.5f; //change to speed
+                Debug.Log("DEV KEY PRESSED");
+                //adding to score
+                staticDataTrack.AddScore(10 + Mathf.RoundToInt(timeSpeed));
+                //adding to the chain count
+                staticDataTrack.SetChain(1);
 
-            //update the game counter
-            counter += 1;
-            //Check for rhymes
-            CheckRhymes();
-            //update sentence box text
-            sentenceBox.text = sentCont.sentences[counter];
-            isClicked = true;
-            TimerReset();
+                //trigger chains to speak
+                aSource2.clip = chains_uhh;
+                aSource2.Play();
+                chains_Animator.SetTrigger("chains_Rap_Trigger");
+
+                //add word to script
+                SaveWord(sentCont.sentences[counter] + sentCont.words[counter][chosenIndex] + '\n');
+                //Check for rhymes
+                CheckRhymes();
+                //update sentence box text
+                sentenceBox.text = sentCont.sentences[counter];
+                isClicked = true;
+                TimerReset();
+            }
+           
         }
         else
         {
@@ -216,13 +255,25 @@ public class timerScript : MonoBehaviour
         }
     }
 
+    List<int> temp = new List<int>
+    {
+        0,1,2,
+    };
+
+
+
     public void GenerateRandomWord()
     {
         words = sentCont.words[counter];
-        word1.word = words[0];
-        word2.word = words[1];
-        word3.word = words[2];
+        temp.Shuffle();
+        word1.word = words[temp[0]];
+        word1.index = temp[0];
+        word2.word = words[temp[1]];
+        word2.index = temp[1];
+        word3.word = words[temp[2]];
+        word3.index = temp[2];
     }
+
 
     //run after counter increased
     public void CheckRhymes()
@@ -251,7 +302,7 @@ public class timerScript : MonoBehaviour
     public int chosenIndexPrev;
 
     //Assign it to buttons as the first function run
-    public void SetChosenIndex(int newIndex)
+    public void SetChosenIndex(Word ww)
     {
         Debug.Log(counter);
         if (timeLeft >= 0.838f * timeMax && timeLeft <= 1f * timeMax)
@@ -260,7 +311,7 @@ public class timerScript : MonoBehaviour
             {
                 chosenIndexPrev = chosenIndex;
             }
-            chosenIndex = newIndex;
+            chosenIndex = ww.index;
         }
     }
 }
