@@ -25,9 +25,11 @@ public class Sentences : MonoBehaviour {
 
         if (timerS.isGameOver && !stringOutput)
         {
+
+            if (staticDataTrack.readOut.Count == 0) sentenceText.text = "None";
+
             foreach (string s in staticDataTrack.readOut)
             {
-                Debug.Log(s);
                 sentenceText.text += s;
             }
             stringOutput = true;

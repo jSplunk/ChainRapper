@@ -7,6 +7,7 @@ public class GameOverCheck : MonoBehaviour {
     public timerScript timerS;
     public GameObject PlayerScreen;
     public GameObject ScoreScreen;
+    public GameObject BadScreen;
     //public Word chosenWord;
     //public Blank chosenBlank;
 
@@ -24,11 +25,16 @@ public class GameOverCheck : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (timerS.isGameOver)
+		if (timerS.isGameOver && staticDataTrack.badScore)
+        {
+            Debug.Log("bad screen");
+            BadScreen.SetActive(true);
+            PlayerScreen.SetActive(false);
+        }
+        else if (timerS.isGameOver)
         {
             ScoreScreen.SetActive(true);
             PlayerScreen.SetActive(false);
-           
         }
 	}
 

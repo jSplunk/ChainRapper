@@ -29,6 +29,7 @@ public class timerScript : MonoBehaviour
     private bool fourthFlag;
     private bool isClicked = false;
     public bool isGameOver = false;
+    private int minScore = 0;
 
     public int counter = 0;
 
@@ -53,9 +54,14 @@ public class timerScript : MonoBehaviour
         timeLeftBar.maxValue = timeMax;
         timeLeftBar.value = 0;
         Debug.Log("Starting timer");
+
+        //If we don't click any button, we deduct points
         if (!isClicked)
             staticDataTrack.AddScore(-10);
+
         timeLeft = 0;
+
+        //Resetting the flag
         isClicked = false;
     }
 
@@ -87,6 +93,8 @@ public class timerScript : MonoBehaviour
     {
         if (timeLeft >= sentCont.rangeMin[counter] * timeMax && timeLeft <= sentCont.rangeMax[counter] * timeMax)
         {
+
+            //Adding each sentence to a List of strings for the game over screen
             if (word1.isClicked)
             {
                 staticDataTrack.readOut.Add(sentCont.sentences[counter] + word1.word + '\n');
@@ -103,11 +111,16 @@ public class timerScript : MonoBehaviour
                 word3.isClicked = false;
             }
 
+            //Make the time max not go negative (Optional)
             if (timeMax > 2) timeMax -= 1;
             
             if (counter > sentCont.rangeMin.Length-1 || counter > sentCont.rangeMax.Length-1 || counter > sentCont.words.Count-2)
             {
-
+                //Checking if we go to a bad score screen or a good score screen as a game over screen
+                if (staticDataTrack.GetScore() < minScore)
+                {
+                    staticDataTrack.isBadScore(true);
+                }
                 isGameOver = true;
                 //GAME
                 //
@@ -125,13 +138,18 @@ public class timerScript : MonoBehaviour
             }
             
         }
-        else if (!(timeLeft >= sentCont.rangeMin[counter] * timeMax && timeLeft <= sentCont.rangeMax[counter] * timeMax) && !isGameOver)
+        //If we miss the timings
+        else if (!(timeLeft >= sentCont.rangeMin[counter] * timeMax && timeLeft <= sentCont.rangeMax[counter] * timeMax) && (!isGameOver || !staticDataTrack.badScore) )
         {
             staticDataTrack.AddScore(-5);
+
+            //Reset the button state
             word1.isClicked = false;
             word2.isClicked = false;
             word3.isClicked = false;
         }
+
+        
     }
 
     public void PlayBeat()
