@@ -640,7 +640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66fdb90affef9d47bec13a425f0ac97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeMax: 10
   timeSpeed: 4
+  timeLeft: 0
   timesUpText: {fileID: 108955924}
   chainCounterText: {fileID: 684796053}
   sentCont: {fileID: 1758715240}
@@ -669,6 +671,8 @@ MonoBehaviour:
   light_Animator: {fileID: 647216202}
   speaker_Animator: {fileID: 1481812854}
   counter: 0
+  chosenIndex: 0
+  chosenIndexPrev: 0
 --- !u!224 &188443994
 RectTransform:
   m_ObjectHideFlags: 0
@@ -686,7 +690,7 @@ RectTransform:
   - {fileID: 169133336}
   - {fileID: 649182674}
   m_Father: {fileID: 1922017959}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1534,6 +1538,93 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 649182673}
   m_CullTransparentMesh: 0
+--- !u!1 &668437047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 668437048}
+  - component: {fileID: 668437051}
+  - component: {fileID: 668437050}
+  - component: {fileID: 668437049}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &668437048
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668437047}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1922017959}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 130.00002, y: 84.000015}
+  m_SizeDelta: {x: 200, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &668437049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668437047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!114 &668437050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668437047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209c9a34304d13b4b85face9cbd7bc9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!222 &668437051
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668437047}
+  m_CullTransparentMesh: 0
 --- !u!1 &684796053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1655,7 @@ RectTransform:
   m_LocalScale: {x: 1.5057, y: 1.5057, z: 1.5057}
   m_Children: []
   m_Father: {fileID: 1922017959}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1773,15 +1864,26 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1075584712}
+  m_TargetGraphic: {fileID: 1676526786}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 188443993}
+        m_MethodName: SetChosenIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 169133334}
         m_MethodName: setTmp
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1075584714}
+          m_ObjectArgument: {fileID: 1676526788}
           m_ObjectArgumentAssemblyTypeName: Word, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1812,6 +1914,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 188443993}
         m_MethodName: GenerateRandomWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1075584714}
+        m_MethodName: SaveWord
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2106,15 +2219,26 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1446360626}
+  m_TargetGraphic: {fileID: 1676526786}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 188443993}
+        m_MethodName: SetChosenIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 169133334}
         m_MethodName: setTmp
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1446360628}
+          m_ObjectArgument: {fileID: 1676526788}
           m_ObjectArgumentAssemblyTypeName: Word, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2145,6 +2269,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 188443993}
         m_MethodName: GenerateRandomWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1446360628}
+        m_MethodName: SaveWord
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2420,7 +2555,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1922017959}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2543,6 +2678,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 188443993}
+        m_MethodName: SetChosenIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 169133334}
         m_MethodName: setTmp
         m_Mode: 2
@@ -2578,6 +2724,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 188443993}
         m_MethodName: GenerateRandomWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1676526788}
+        m_MethodName: SaveWord
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2668,44 +2825,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
-  - "My name\u2019s Chain the _____"
-  - "I\u2019m not just some _____"
-  - Surrounded by a world of _____
-  - Nothing left to see but _____
-  - Not living a life too _____
-  - All I eat is _____
-  - You thought Chernobyl was _____
-  - 'Well, _____ '
-  - A gorgeous view of _____
-  - Is now just a land of _____
-  - "But all\u2019s not over, until humanity _____"
-  - For we can still _____
-  rangeMin:
-  - 0.5
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
-  rangeMax:
-  - 0.7
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
+  - "My name\u2019s Chain the "
+  - "I\u2019m not just some "
+  - 'Not living a life too '
+  - 'All I eat is '
+  - 'Surrounded by a world of '
+  - 'Nothing left to see but '
+  - 'You thought Chernobyl was '
+  - 'Well, '
+  - 'A gorgeous view of '
+  - 'Is now just a land of '
+  - "But all\u2019s not over, until humanity "
+  - 'For we can still '
+  - 'As I stand, I see toxic '
+  - 'Just a glimpse already '
+  - 'So now I ask for your '
+  - 'Mother nature''s wounds we shall '
 --- !u!4 &1758715241
 Transform:
   m_ObjectHideFlags: 0
@@ -2750,6 +2885,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 668437048}
   - {fileID: 1587539982}
   - {fileID: 188443994}
   - {fileID: 684796054}
@@ -2963,7 +3099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2018560875
 Transform:
   m_ObjectHideFlags: 0

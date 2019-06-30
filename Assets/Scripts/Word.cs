@@ -10,6 +10,7 @@ public class Word : MonoBehaviour {
 
     //public WordContainer.Type type;
     public string word;
+    //public timerScript timerScriptReference;
     
     //public timerScript timer;
     Text rapWord;
@@ -19,6 +20,7 @@ public class Word : MonoBehaviour {
         rapWord = GetComponentInChildren<Text>();
         rapWord.text = word;
     }
+
 
 
     //// Use this for initialization
