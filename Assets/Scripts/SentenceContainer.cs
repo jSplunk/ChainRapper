@@ -3,58 +3,118 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SentenceContainer : MonoBehaviour {
+public class SentenceContainer : MonoBehaviour
+{
 
-    public string[] sentences = new string[100];
-    //{
-    //    "My name’s Chain the _____",
-    //    "I’m not just some _____",
-    //    "Surrounded by a world of _____",
-    //    "Nothing left to see but _____",
+    public string[] sentences = new string[]
+    {
+        //Verse 1
+        "My name’s Chain the ",
+        "I’m not just some ",
+        "Not living a life too ",
+        "All I eat is ",
 
-    //    "Not living a life too _____",
-    //    "All I eat is _____",
-    //    "You thought Chernobyl was _____",
-    //    "Well, _____ ",
+        //Verse 2
+        "Surrounded by a world of ",
+        "Nothing left to see but ",
+        "You thought Chernobyl was ",
+        "Well, ",
 
-    //    "A gorgeous view of _____",
-    //    "Is now just a land of _____",
-    //    "But all’s not over, until humanity _____",
-    //    "For we can still _____"
-    //};
+        //Verse 3
+        "A gorgeous view of ",
+        "Is now just a land of ",
+        "But all’s not over, until humanity ",
+        "For we can still ",
+
+        //Verse 4
+        "As I stand, I see toxic ",
+        "Just a glimpse already ",
+        "So now I ask for your ",
+        "Mother nature's wounds we shall "
+    };
 
     public List<List<string>> words = new List<List<string>>
     {
+
+    //Verse 1
         new List<string>
         {
-            "rapper", "hound", "loner"
+            "rapper", "hound", "loner",
         },
         new List<string>
         {
-            "snapper", "dapper", "clapper", "crapper", "sound", "moaner"
+            "crapper", "sound", "moaner",
         },
         new List<string>
         {
-            "grand", "class", "posh", "clean"
+            "grand", "class", "clean",
         },
         new List<string>
         {
-            "beans in cans", "radioactive grass", "wasteland ass", "hogwash", "way obscene","trash at hand"
+            "trash at hand", "wasteland ass", "way obscene",
         },
 
+        //Verse 2
+        new List<string>
+        {
+           "ash", "ruin", "end",
+        },
+        new List<string>
+        {
+            "the backlash", "to be doin'", "mend",
+        },
+        new List<string>
+        {
+            "bad", "the end", "ruination",
+        },
+        new List<string>
+        {
+            "my diapers are second hand", "too bad we didn't amend", "we ruined more than just a nation",
+        },
+
+        //Verse 3
+        new List<string>
+        {
+            "past life's", "grassy hills", "mother nature",
+        },
+        new List<string>
+        {
+           "mass crimes", "devil's grills", "hellish danger",
+        },
+        new List<string>
+        {
+           "lives", "stands", "holds on",
+        },
+        new List<string>
+        {
+            "fix this", "make amends", "have a new dawn",
+        },
+
+        //Verse 4
+        new List<string>
+        {
+            "rivers", "wastes", "air",
+        },
+        new List<string>
+        {
+            "aid", "help", "hand",
+        },
+        new List<string>
+        {
+            "fade", "tend", "mend",
+        },
     };
 
-    public float[] rangeMin = new float[]
-    {
-        0.77f,
-        0.71f,
-    };
+    //public float[] rangeMin = new float[]
+    //{
+    //    0.838f,
+    //};
 
 
-    public float[] rangeMax = new float[]
-    {
-        1f,
-        0.95f,
+    //public float[] rangeMax = new float[]
+    //{
+    //    1f,
 
-    };
+
+    //};
 }
