@@ -7,6 +7,9 @@ public static class staticDataTrack {
     public static int score;
     public static int chain = 0;
     private static int highestChain = 0;
+    //static List<string> wordChoices = new List<string>();
+
+    public static List<string> readOut = new List<string>();
 
     public static void AddScore(int updatedScore)
     {
@@ -46,5 +49,11 @@ public static class staticDataTrack {
     public static int GetHighestChain()
     {
         return highestChain;
+    }
+
+    public static void AddToWordList(string word)
+    {
+        readOut.Add(word);
+        Debug.Log(word);
     }
 }

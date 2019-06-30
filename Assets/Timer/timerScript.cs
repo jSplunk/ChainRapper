@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class timerScript : MonoBehaviour
 {
     Slider timeLeftBar;
-    private float timeMax = 10.0f;
+    public float timeMax = 10.0f;
     [SerializeField] private float timeSpeed = 10.0f;
-    float timeLeft;
+    public float timeLeft;
     public GameObject timesUpText;
     public GameObject chainCounterText;
     public SentenceContainer sentCont;
@@ -119,11 +119,11 @@ public class timerScript : MonoBehaviour
 
     public void checkPhase()
     {
-        if (timeLeft >= sentCont.rangeMin[counter] * timeMax && timeLeft <= sentCont.rangeMax[counter] * timeMax)
+        if (timeLeft >= 0.838f * timeMax && timeLeft <= 1f * timeMax)
         {
             //if the moment button clicked is within the blank space
             //decreases max time of timer so it scrolls faster
-            timeMax -= 1;
+            timeMax -= 0.5f; //change to speed
             Debug.Log("DEV KEY PRESSED");
             //adding to score
             staticDataTrack.AddScore(10 + Mathf.RoundToInt(timeSpeed));
@@ -135,8 +135,13 @@ public class timerScript : MonoBehaviour
             aSource2.Play();
             chains_Animator.SetTrigger("chains_Rap_Trigger");
 
+            //add word to script
+            SaveWord(sentCont.sentences[counter] + sentCont.words[counter][chosenIndex] + '\n') ;
+
             //update the game counter
             counter += 1;
+            //Check for rhymes
+            CheckRhymes();
             //update sentence box text
             sentenceBox.text = sentCont.sentences[counter];
             isClicked = true;
@@ -155,7 +160,7 @@ public class timerScript : MonoBehaviour
             aSource3.Play();
 
             //slow down timer
-            timeMax += 1;
+            timeMax += 1; //change to speed
             //reset the chain
             staticDataTrack.ResetChain();
         }
@@ -219,5 +224,44 @@ public class timerScript : MonoBehaviour
         word3.word = words[2];
     }
 
+    //run after counter increased
+    public void CheckRhymes()
+    {
+        if (counter % 2 == 0)
+        {
+            if (chosenIndex == chosenIndexPrev && counter > 0)
+            {
+                //Play sound
+                //Crowd Cheer
+                //staticDataTrack.AddScore(99);
+                Debug.Log("thyme");
+            }
+        }
+    }
+
+    //saving words when button pressed
+    public void SaveWord(string word)
+    {
+        staticDataTrack.AddToWordList(word);
+    }
+
+    //test------------
+    //Take this from button pressed
+    public int chosenIndex;
+    public int chosenIndexPrev;
+
+    //Assign it to buttons as the first function run
+    public void SetChosenIndex(int newIndex)
+    {
+        Debug.Log(counter);
+        if (timeLeft >= 0.838f * timeMax && timeLeft <= 1f * timeMax)
+        {
+            if (counter % 2 != 0)
+            {
+                chosenIndexPrev = chosenIndex;
+            }
+            chosenIndex = newIndex;
+        }
+    }
 }
 
