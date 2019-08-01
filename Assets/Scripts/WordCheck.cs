@@ -24,10 +24,10 @@ public class WordCheck : MonoBehaviour {
 		
 	}
 
-    public void ButtonRefresh()
-    {
-        sentences.Add(currentSentance.isSentanceComplete());
-    }
+    //public void ButtonRefresh()
+    //{
+    //    sentences.Add(currentSentance.isSentanceComplete());
+    //}
 
     //bool DoesItFit()
     //{
