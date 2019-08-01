@@ -9,7 +9,7 @@ public class Sentences : MonoBehaviour {
     Text sentenceText;
     bool stringOutput = false;
     public bool SentencesComplete = false;
-    float speedText = 0.01f;
+    float speedText = 50.0f;
     //List<string> sentences;
 
 	// Use this for initialization
@@ -40,7 +40,7 @@ public class Sentences : MonoBehaviour {
         if (timerS.isGameOver)
         {
             
-            sentenceText.transform.position = new Vector2(sentenceText.transform.position.x, sentenceText.transform.position.y+speedText);
+            sentenceText.transform.position = new Vector2(sentenceText.transform.position.x, sentenceText.transform.position.y+speedText * Time.deltaTime);
 
             if (sentenceText.transform.position.y - sentenceText.rectTransform.rect.height/2 > Screen.height)
             {

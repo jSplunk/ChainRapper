@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class staticDataTrack {
 
-    public static int score;
+    public static int score = 0;
     public static bool badScore;
     public static int chain = 0;
     private static int highestChain = 0;

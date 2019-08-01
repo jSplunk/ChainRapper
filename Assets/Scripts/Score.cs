@@ -12,7 +12,7 @@ public class Score : MonoBehaviour {
 
         scoreText = GetComponent<Text>();
 
-        scoreText.text = staticDataTrack.score.ToString();
+        scoreText.text = "Final Score: " + staticDataTrack.score;
 	}
 	
 	// Update is called once per frame

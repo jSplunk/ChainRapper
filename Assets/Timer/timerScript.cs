@@ -67,6 +67,10 @@ public class timerScript : MonoBehaviour
         GenerateRandomWord();
         Debug.Log(sentCont.sentences.Length);
 
+        //update the game text
+        scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
+        chainCounterText.GetComponent<Text>().text = "CHAIN: " + staticDataTrack.GetChain();
+
     }
 
     void TimerReset()
@@ -91,9 +95,7 @@ public class timerScript : MonoBehaviour
             timeMax = 15;
         }
         timeLeftBar.maxValue = timeMax;
-        //update the game text
-        scoreText.GetComponent<Text>().text = "SCORE: " + staticDataTrack.GetScore();
-        chainCounterText.GetComponent<Text>().text = "CHAIN: " + staticDataTrack.GetChain();
+        
 
         //updating object playback speed
         light_Animator.speed = timeSpeed / 10;
@@ -122,10 +124,7 @@ public class timerScript : MonoBehaviour
         }
 
         //---------------------------------------
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            checkPhase();
-        }
+        
     }
 
     public void checkPhase()
@@ -139,15 +138,15 @@ public class timerScript : MonoBehaviour
 
             if (word1.isClicked)
             {
-                word1.index = chosenIndex;
+                chosenIndex = word1.index;
             }
             else if (word2.isClicked)
             {
-                word2.index = chosenIndex;
+                chosenIndex = word2.index;
             }
             else if (word3.isClicked)
             {
-                word3.index = chosenIndex;
+                chosenIndex = word3.index;
             }
 
             if (counter > sentCont.sentences.Length - 2)
@@ -176,7 +175,7 @@ public class timerScript : MonoBehaviour
                 chains_Animator.SetTrigger("chains_Rap_Trigger");
 
                 //add word to script
-                SaveWord(sentCont.sentences[counter] + sentCont.words[counter][chosenIndex] + '\n');
+                SaveWord(sentCont.sentences[counter-1] + sentCont.words[counter-1][chosenIndex] + '\n');
                 //Check for rhymes
                 CheckRhymes();
                 //update sentence box text
@@ -203,6 +202,11 @@ public class timerScript : MonoBehaviour
             //reset the chain
             staticDataTrack.ResetChain();
         }
+
+        Debug.Log("SCORE: " + staticDataTrack.GetScore());
+        //update the game text
+        scoreText.GetComponent<Text>().text = "SCORE: "+staticDataTrack.GetScore();
+        chainCounterText.GetComponent<Text>().text = "CHAIN: " + staticDataTrack.GetChain();
     }
 
 
@@ -302,17 +306,17 @@ public class timerScript : MonoBehaviour
     public int chosenIndexPrev;
 
     //Assign it to buttons as the first function run
-    public void SetChosenIndex(Word ww)
-    {
-        Debug.Log(counter);
-        if (timeLeft >= 0.838f * timeMax && timeLeft <= 1f * timeMax)
-        {
-            if (counter % 2 != 0)
-            {
-                chosenIndexPrev = chosenIndex;
-            }
-            chosenIndex = ww.index;
-        }
-    }
+    //public void SetChosenIndex(Word ww)
+    //{
+    //    Debug.Log(counter);
+    //    if (timeLeft >= 0.838f * timeMax && timeLeft <= 1f * timeMax)
+    //    {
+    //        if (counter % 2 != 0)
+    //        {
+    //            chosenIndexPrev = chosenIndex;
+    //        }
+    //        chosenIndex = ww.index;
+    //    }
+    //}
 }
 
